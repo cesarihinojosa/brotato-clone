@@ -3,7 +3,7 @@
 Player::Player(float x, float y, int velocity)
     : x(x), y(y), velocity(velocity),
       texture(LoadTexture("assets/sprites/knight.png")),
-      animation(0, 3, 0, 0.1, 4) {}
+      animation(0, 3, 0, 0.1, 8, "assets/sprites/knight.png") {}
 
 void Player::draw() {
   animation.update();

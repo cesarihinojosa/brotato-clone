@@ -3,7 +3,7 @@
 Enemy::Enemy(float x, float y, int velocity)
     : x(x), y(y), velocity(velocity),
       texture(LoadTexture("assets/sprites/slime_green.png")),
-      animation(0, 3, 0, 0.1, 4) {}
+      animation(0, 3, 0, 0.12, 4, "assets/sprites/slime_green.png") {}
 
 void Enemy::draw() {
   animation.update();
