@@ -1,0 +1,17 @@
+# Build output
+build/
+brotato-clone
+
+# Compiled objects
+*.o
+*.obj
+
+# macOS
+.DS_Store
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

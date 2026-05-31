@@ -6,7 +6,7 @@ CPPFLAGS := $(shell pkg-config --cflags raylib)
 BUILDDIR := build
 SRC      := $(wildcard *.cpp)
 OBJ      := $(SRC:%.cpp=$(BUILDDIR)/%.o)
-BIN      := raycaster
+BIN      := brotato-clone
 
 all: $(BIN)
 
