@@ -7,6 +7,7 @@ public:
   float x;
   float y;
   int velocity;
+  int health;
 
   Player(float x, float y, int velocity);
   void draw();

@@ -30,6 +30,7 @@
  ********************************************************************************************/
 #include "enemy.hpp"
 #include "player.hpp"
+#include "raylib.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -42,6 +43,7 @@ int main(void) {
 
   InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
+  // TODO: learn more about FPS
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
@@ -61,10 +63,11 @@ int main(void) {
     //----------------------------------------------------------------------------------
     BeginDrawing();
 
-    ClearBackground(RAYWHITE);
+    ClearBackground(GRAY);
 
     player.draw();
     enemy.draw();
+    DrawFPS(screenWidth - 30, screenHeight - 30);
 
     EndDrawing();
     //----------------------------------------------------------------------------------
