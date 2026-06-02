@@ -8,8 +8,10 @@ public:
   float y;
   int velocity;
   int health;
+  float width;
+  float height;
 
-  Player(float x, float y, int velocity);
+  Player(float x, float y, int velocity, float width, float height);
   void draw();
   void update();
   void unload();

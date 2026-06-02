@@ -47,7 +47,7 @@ int main(void) {
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
-  Player player(screenWidth / 2.0f, screenHeight / 2.0f, 5);
+  Player player(screenWidth / 2.0f, screenHeight / 2.0f, 5, 64.0, 64.0);
   Enemy enemy(15, 15, 5);
 
   // Main game loop
