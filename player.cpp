@@ -2,7 +2,7 @@
 #include "raylib.h"
 
 Player::Player(float x, float y, int velocity, float width, float height)
-    : x(x), y(y), velocity(velocity), health(9), width(width), height(height),
+    : x(x), y(y), velocity(velocity), health(4), width(width), height(height),
       texture(LoadTexture("assets/sprites/knight.png")),
       animation(0, 3, 0, 0.1, 8, "assets/sprites/knight.png") {}
 
