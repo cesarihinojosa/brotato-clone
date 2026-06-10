@@ -28,7 +28,23 @@ public:
     return ref;
   }
 
-  template <typename T> T &getComponent() {}
+  template <typename T> T &getComponent() {
+    auto it = components.find(std::type_index(typeid(T)));
+    return it == components.end() ? nullptr
+                                  : static_cast<T *>(it->second.get());
+  }
+
+  // Go through each component in components and call it's update()
+  void update(float dt) {
+    for (auto &[type, component] : components)
+      component->update(dt);
+  }
+
+  // Go through each component in components and call it's draw()
+  void draw() {
+    for (auto &[type, component] : components)
+      component->draw();
+  }
 
 private:
   std::unordered_map<std::type_index, std::unique_ptr<Component>> components;
