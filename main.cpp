@@ -18,7 +18,6 @@ int main(void) {
 
   Scene scene;
 
-  // Build Player
   GameObject &player = scene.spawn();
   player.addComponent<TransformComponent>(screenWidth / 2, screenHeight / 2);
   player.addComponent<VelocityComponent>(5);

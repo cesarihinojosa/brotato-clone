@@ -1,10 +1,12 @@
 CXX      := clang++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2
 LDFLAGS  := $(shell pkg-config --libs raylib)
-CPPFLAGS := $(shell pkg-config --cflags raylib)
+
+SRCDIRS  := core components entities
+CPPFLAGS := $(shell pkg-config --cflags raylib) $(addprefix -I,$(SRCDIRS))
 
 BUILDDIR := build
-SRC      := $(wildcard *.cpp)
+SRC      := main.cpp $(foreach d,$(SRCDIRS),$(wildcard $(d)/*.cpp))
 OBJ      := $(SRC:%.cpp=$(BUILDDIR)/%.o)
 DEP      := $(OBJ:.o=.d)
 BIN      := brotato-clone
@@ -14,13 +16,11 @@ all: $(BIN)
 $(BIN): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(BUILDDIR)/%.o: %.cpp | $(BUILDDIR)
+$(BUILDDIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
 -include $(DEP)
-
-$(BUILDDIR):
-	mkdir -p $(BUILDDIR)
 
 debug: CXXFLAGS := -std=c++17 -Wall -Wextra -g -O0 -DDEBUG
 debug: clean $(BIN)

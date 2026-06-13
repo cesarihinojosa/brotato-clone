@@ -2,3 +2,6 @@
 -Wall
 -Wextra
 -I/opt/homebrew/include
+-Icore
+-Icomponents
+-Ientities
