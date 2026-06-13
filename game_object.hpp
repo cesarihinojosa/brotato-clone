@@ -28,7 +28,7 @@ public:
     return ref;
   }
 
-  template <typename T> T &getComponent() {
+  template <typename T> T *getComponent() {
     auto it = components.find(std::type_index(typeid(T)));
     return it == components.end() ? nullptr
                                   : static_cast<T *>(it->second.get());
