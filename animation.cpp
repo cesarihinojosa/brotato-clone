@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 
+// TODO: Restructure animation system to fit component architecture
 Animation::Animation(int first, int last, int curr, float speed, int frames,
                      std::string image)
     : first(first), last(last), curr(curr), speed(speed), frames(frames),
