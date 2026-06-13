@@ -1,7 +1,9 @@
+#include "game_object.hpp"
 #include "player_input_component.hpp"
 #include "raylib.h"
 #include "rectangle_component.hpp"
 #include "scene.hpp"
+#include "sprite_component.hpp"
 #include "transform_component.hpp"
 #include "velocity_component.hpp"
 
@@ -19,10 +21,13 @@ int main(void) {
   // Build Player
   GameObject &player = scene.spawn();
   player.addComponent<TransformComponent>(screenWidth / 2, screenHeight / 2);
-  player.addComponent<RectangleComponent>(20, 70, RED);
   player.addComponent<VelocityComponent>(5);
   player.addComponent<PlayerInputComponent>();
+  player.addComponent<SpriteComponent>("assets/characters/bull.png", 0.15);
 
+  GameObject &enemy = scene.spawn();
+  enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
+  enemy.addComponent<SpriteComponent>("assets/enemies/baby_alien.png", 0.07);
   // player.addComponent<ShapeComponent>(rectangle, size);
 
   // Main game loop
