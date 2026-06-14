@@ -2,6 +2,9 @@
 build/
 brotato-clone
 
+# Generated documentation
+docs/
+
 # Compiled objects
 *.o
 *.obj

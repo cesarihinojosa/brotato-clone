@@ -1,0 +1,12 @@
+PROJECT_NAME     = "Brotato Clone Engine"
+PROJECT_BRIEF    = "A micro 2D game engine built on top of raylib"
+OUTPUT_DIRECTORY = docs
+INPUT            = core components main.cpp
+RECURSIVE        = NO
+EXTRACT_ALL      = YES
+GENERATE_LATEX   = NO
+HAVE_DOT         = YES
+QUIET                 = YES
+FILE_PATTERNS         = *.hpp *.cpp *.h
+HTML_EXTRA_STYLESHEET = docs-theme/doxygen-awesome.css
+HTML_COLORSTYLE       = LIGHT

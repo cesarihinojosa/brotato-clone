@@ -8,7 +8,6 @@
 #include "transform_component.hpp"
 #include "velocity_component.hpp"
 
-// TODO: Add documentaion
 int main(void) {
 
   // Initialization
@@ -30,7 +29,6 @@ int main(void) {
   enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
   enemy.addComponent<AnimationSpriteComponent>("assets/enemies/baby_alien.png",
                                                0.07, 0.9, 7);
-  // player.addComponent<ShapeComponent>(rectangle, size);
 
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key

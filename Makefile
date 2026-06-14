@@ -35,4 +35,7 @@ run: $(BIN)
 clean:
 	rm -rf $(BUILDDIR) $(BIN)
 
-.PHONY: all debug run clean
+docs:
+	doxygen Doxyfile
+
+.PHONY: all debug run clean docs
