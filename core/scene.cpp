@@ -12,7 +12,7 @@ void Scene::update(float dt) {
     o->update(dt);
 }
 
-void Scene::draw() {
+void Scene::draw() const {
   for (auto &o : objects)
     o->draw();
 }

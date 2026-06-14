@@ -5,7 +5,7 @@
 #include <cassert>
 
 SpriteComponent::SpriteComponent(const char *filename, float scale)
-    : texture(LoadTexture(filename)), scale(scale) {}
+    : texture(LoadTexture(filename)), scale(std::clamp(scale, 0.02f, 100.0f)) {}
 
 SpriteComponent::~SpriteComponent() { UnloadTexture(texture); }
 

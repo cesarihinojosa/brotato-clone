@@ -9,5 +9,5 @@ public:
 
 private:
   Texture2D texture;
-  float scale;
+  const float scale;
 };

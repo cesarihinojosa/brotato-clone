@@ -11,10 +11,10 @@ public:
 
 private:
   Texture2D texture;
-  float scale;
+  const float scale;
   const float max_bob;
-  float speed;
+  const float speed;
   float current_height;
   float current_bob;
-  float direction;
+  bool up;
 };

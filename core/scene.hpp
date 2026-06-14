@@ -7,7 +7,7 @@ class Scene {
 public:
   GameObject &spawn();
   void update(float dt);
-  void draw();
+  void draw() const;
 
 private:
   std::vector<std::unique_ptr<GameObject>> objects;

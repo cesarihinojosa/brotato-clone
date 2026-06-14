@@ -2,13 +2,16 @@
 #include "game_object.hpp"
 #include "raylib.h"
 #include "transform_component.hpp"
+#include <algorithm>
 #include <cassert>
 
 AnimationSpriteComponent::AnimationSpriteComponent(const char *filename,
                                                    float scale, float max_bob,
                                                    float speed)
-    : texture(LoadTexture(filename)), scale(scale), max_bob(max_bob),
-      speed(speed), current_bob(max_bob), direction(1) {}
+    : texture(LoadTexture(filename)), scale(std::clamp(scale, 0.02f, 100.0f)),
+      max_bob(std::clamp(max_bob, 0.0f, 1.0f)),
+      speed(std::clamp(speed, 0.0f, 100.0f)),
+      current_bob(std::clamp(max_bob, 0.0f, 1.0f)), up(true) {}
 
 AnimationSpriteComponent::~AnimationSpriteComponent() {
   UnloadTexture(texture);
@@ -32,16 +35,14 @@ void AnimationSpriteComponent::draw() const {
 }
 
 void AnimationSpriteComponent::update(float dt) {
-  if (direction == 1) {
+  if (up) {
     current_bob += 0.001 * speed;
-    if (current_bob > 1) {
-      direction = -1;
-    }
+    if (current_bob >= 1.0)
+      up = false;
   } else {
     current_bob -= 0.001 * speed;
-    if (current_bob < max_bob) {
-      direction = 1;
-    }
+    if (current_bob < max_bob)
+      up = true;
   }
   current_height = texture.height * current_bob;
 }

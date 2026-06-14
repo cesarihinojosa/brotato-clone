@@ -41,7 +41,7 @@ public:
   }
 
   // Go through each component in components and call it's draw()
-  void draw() {
+  void draw() const {
     for (auto &[type, component] : components)
       component->draw();
   }

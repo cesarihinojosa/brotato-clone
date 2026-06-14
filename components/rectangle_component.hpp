@@ -3,9 +3,9 @@
 
 class RectangleComponent : public Component {
 public:
-  float height;
-  float width;
-  Color color;
+  const float height;
+  const float width;
+  const Color color;
   RectangleComponent(float height, float width, Color color);
   void update(float dt) override;
   void draw() const override;
