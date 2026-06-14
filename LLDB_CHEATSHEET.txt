@@ -1,0 +1,74 @@
+LLDB Cheatsheet for Game Dev
+============================
+
+Getting Started
+---------------
+  make debug                    build with debug symbols (-g -O0)
+  lldb ./brotato-clone          launch in debugger
+
+Basics
+------
+  r                             run the program
+  c                             continue to next breakpoint
+  n                             step over (next line)
+  s                             step into function
+  f                             step out of current function
+  p myVar                       print a variable
+  fr v                          show all local variables
+  bt                            show backtrace (call stack)
+  q                             quit
+
+Breakpoints
+-----------
+  b main.cpp:42                             break at line 42
+  b Entity::update                          break on a method
+  b collision.cpp:40 -c "damage > 50"       conditional: big hits only
+  b enemy.cpp:20 -c "enemies.size() > 100"  conditional: too many enemies
+  breakpoint list                           show all breakpoints
+  breakpoint delete 3                       delete breakpoint #3
+
+Watchpoints — pause when a value changes
+-----------------------------------------
+  watchpoint set variable player.health     WHO changed my health?
+  bt                                        see the call stack that did it
+
+Modify Variables at Runtime
+---------------------------
+  p player.speed = 500.0f                   make yourself faster
+  p player.health = 9999                    god mode
+  p enemy.position = {100, 200}             teleport an enemy
+
+Call Functions Live
+-------------------
+  p SpawnEnemy({400, 300})                  spawn an enemy at a position
+  p SetWave(10)                             skip to wave 10
+
+Log Without Recompiling
+-----------------------
+  Break + auto-continue = printf debugging without code changes:
+
+  b update -c 0 --command 'p player.position' --auto-continue true
+
+Pretty-Print Raylib Types
+-------------------------
+  type summary add Vector2 --summary-string "(${var.x}, ${var.y})"
+  type summary add Rectangle --summary-string "(${var.x}, ${var.y}, ${var.width}x${var.height})"
+
+  Add these to ~/.lldbinit so they load automatically.
+
+Save / Load Breakpoints
+------------------------
+  breakpoint write -f my_breakpoints.json
+  breakpoint read -f my_breakpoints.json
+
+Thread Debugging
+----------------
+  thread list                               see all threads
+  thread select 2                           switch to thread 2
+  bt                                        see what that thread is doing
+
+AddressSanitizer (alternative to LLDB)
+--------------------------------------
+  Catches memory bugs (buffer overflows, use-after-free) at runtime:
+
+  make sanitize && ./brotato-clone

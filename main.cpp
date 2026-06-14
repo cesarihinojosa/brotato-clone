@@ -1,3 +1,4 @@
+#include "animation_sprite_component.hpp"
 #include "game_object.hpp"
 #include "player_input_component.hpp"
 #include "raylib.h"
@@ -22,11 +23,13 @@ int main(void) {
   player.addComponent<TransformComponent>(screenWidth / 2, screenHeight / 2);
   player.addComponent<VelocityComponent>(5);
   player.addComponent<PlayerInputComponent>();
-  player.addComponent<SpriteComponent>("assets/characters/bull.png", 0.15);
+  player.addComponent<AnimationSpriteComponent>("assets/characters/bull.png",
+                                                0.15, 0.9, 8);
 
   GameObject &enemy = scene.spawn();
   enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
-  enemy.addComponent<SpriteComponent>("assets/enemies/baby_alien.png", 0.07);
+  enemy.addComponent<AnimationSpriteComponent>("assets/enemies/baby_alien.png",
+                                               0.07, 0.9, 7);
   // player.addComponent<ShapeComponent>(rectangle, size);
 
   // Main game loop
