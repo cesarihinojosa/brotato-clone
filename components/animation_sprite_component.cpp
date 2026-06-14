@@ -5,10 +5,10 @@
 #include <cassert>
 
 AnimationSpriteComponent::AnimationSpriteComponent(const char *filename,
-                                                   float scale, float bob,
+                                                   float scale, float max_bob,
                                                    float speed)
-    : texture(LoadTexture(filename)), scale(scale), bob(bob), speed(speed),
-      current_bob(bob), direction(1) {}
+    : texture(LoadTexture(filename)), scale(scale), max_bob(max_bob),
+      speed(speed), current_bob(max_bob), direction(1) {}
 
 AnimationSpriteComponent::~AnimationSpriteComponent() {
   UnloadTexture(texture);
@@ -39,7 +39,7 @@ void AnimationSpriteComponent::update(float dt) {
     }
   } else {
     current_bob -= 0.001 * speed;
-    if (current_bob < bob) {
+    if (current_bob < max_bob) {
       direction = 1;
     }
   }

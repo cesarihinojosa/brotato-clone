@@ -18,6 +18,18 @@ Basics
   bt                            show backtrace (call stack)
   q                             quit
 
+Example Start
+-------
+  make debug
+  2. Launch LLDB:
+  lldb ./brotato-clone
+  3. Set a breakpoint (optional):
+  b main.cpp:38
+  4. Run:
+  r
+  5. When you're done, quit:
+  q
+
 Breakpoints
 -----------
   b main.cpp:42                             break at line 42

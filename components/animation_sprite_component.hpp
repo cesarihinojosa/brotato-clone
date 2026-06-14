@@ -3,7 +3,7 @@
 
 class AnimationSpriteComponent : public Component {
 public:
-  AnimationSpriteComponent(const char *filename, float scale, float bob,
+  AnimationSpriteComponent(const char *filename, float scale, float max_bob,
                            float speed);
   ~AnimationSpriteComponent();
   void draw() override;
@@ -12,7 +12,7 @@ public:
 private:
   Texture2D texture;
   float scale;
-  const float bob;
+  const float max_bob;
   float speed;
   float current_height;
   float current_bob;
