@@ -9,7 +9,7 @@ SpriteComponent::SpriteComponent(const char *filename, float scale)
 
 SpriteComponent::~SpriteComponent() { UnloadTexture(texture); }
 
-void SpriteComponent::draw() {
+void SpriteComponent::draw() const {
   assert(owner->getComponent<TransformComponent>() != nullptr);
   auto transform = owner->getComponent<TransformComponent>();
   DrawTexturePro(texture,

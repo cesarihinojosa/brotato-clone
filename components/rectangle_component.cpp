@@ -7,7 +7,7 @@
 RectangleComponent::RectangleComponent(float height, float width, Color color)
     : height(height), width(width), color(color) {}
 
-void RectangleComponent::draw() {
+void RectangleComponent::draw() const {
   assert(owner->getComponent<TransformComponent>() != nullptr);
 
   // TODO: I dont think this should happen every time, maybe keep as attribute?

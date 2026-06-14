@@ -14,7 +14,7 @@ AnimationSpriteComponent::~AnimationSpriteComponent() {
   UnloadTexture(texture);
 }
 
-void AnimationSpriteComponent::draw() {
+void AnimationSpriteComponent::draw() const {
   assert(owner->getComponent<TransformComponent>() != nullptr);
   auto transform = owner->getComponent<TransformComponent>();
 

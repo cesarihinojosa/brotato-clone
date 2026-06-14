@@ -6,7 +6,7 @@ public:
   AnimationSpriteComponent(const char *filename, float scale, float max_bob,
                            float speed);
   ~AnimationSpriteComponent();
-  void draw() override;
+  void draw() const override;
   void update(float dt) override;
 
 private:

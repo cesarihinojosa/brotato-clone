@@ -8,5 +8,5 @@ public:
   virtual ~Component() = default;
   virtual void start() {}
   virtual void update(float dt) {}
-  virtual void draw() {}
+  virtual void draw() const {}
 };

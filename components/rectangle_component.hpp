@@ -8,5 +8,5 @@ public:
   Color color;
   RectangleComponent(float height, float width, Color color);
   void update(float dt) override;
-  void draw() override;
+  void draw() const override;
 };
