@@ -17,6 +17,7 @@ AnimationSpriteComponent::~AnimationSpriteComponent() {
   UnloadTexture(texture);
 }
 
+// TODO: User should pass in x and y to provide more control.
 void AnimationSpriteComponent::draw() const {
   assert(owner->getComponent<TransformComponent>() != nullptr);
   auto transform = owner->getComponent<TransformComponent>();

@@ -1,6 +1,7 @@
 #include "animation_sprite_component.hpp"
 #include "game_object.hpp"
 #include "health_component.hpp"
+#include "hitbox_component.hpp"
 #include "player_input_component.hpp"
 #include "raylib.h"
 #include "rectangle_component.hpp"
@@ -26,6 +27,8 @@ int main(void) {
   player.addComponent<AnimationSpriteComponent>("assets/characters/bull.png",
                                                 0.15, 0.9, 8);
   player.addComponent<HealthComponent>(8, 10);
+  player.addComponent<HitboxComponent>(25.0);
+  player.getComponent<HitboxComponent>()->debug = true;
 
   GameObject &enemy = scene.spawn();
   enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
