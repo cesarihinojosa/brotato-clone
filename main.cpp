@@ -1,5 +1,6 @@
 #include "animation_sprite_component.hpp"
 #include "game_object.hpp"
+#include "health_component.hpp"
 #include "player_input_component.hpp"
 #include "raylib.h"
 #include "rectangle_component.hpp"
@@ -24,11 +25,13 @@ int main(void) {
   player.addComponent<PlayerInputComponent>();
   player.addComponent<AnimationSpriteComponent>("assets/characters/bull.png",
                                                 0.15, 0.9, 8);
+  player.addComponent<HealthComponent>(8, 10);
 
   GameObject &enemy = scene.spawn();
   enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
   enemy.addComponent<AnimationSpriteComponent>("assets/enemies/baby_alien.png",
                                                0.07, 0.9, 7);
+  enemy.addComponent<HealthComponent>(2, 20);
 
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key
