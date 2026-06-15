@@ -1,7 +1,7 @@
 # Brotato Clone
 
 A 2D top-down roguelike survival shooter, built in C++ with [raylib](https://www.raylib.com/).
-The game is built on top of a small custom engine that lives in the same repo.
+The game is built on top of a tiny custom engine that lives in the same repo.
 
 ## Architecture
 
