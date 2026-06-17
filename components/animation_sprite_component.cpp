@@ -17,18 +17,21 @@ AnimationSpriteComponent::~AnimationSpriteComponent() {
   UnloadTexture(texture);
 }
 
-// TODO: User should pass in x and y to provide more control.
+// TODO: Find a better way to give user control over where to render
 void AnimationSpriteComponent::draw() const {
   assert(owner->getComponent<TransformComponent>() != nullptr);
   auto transform = owner->getComponent<TransformComponent>();
+
+  float destination_x = transform->x - ((texture.width * scale) / 2);
+  float destination_y = transform->y - ((texture.height * scale) / 2) +
+                        ((texture.height - current_height) * scale);
 
   Rectangle source = {.x = 0.0,
                       .y = 0.0,
                       .width = (float)texture.width,
                       .height = (float)texture.height};
-  Rectangle destination = {.x = transform->x,
-                           .y = transform->y +
-                                ((texture.height - current_height) * scale),
+  Rectangle destination = {.x = destination_x,
+                           .y = destination_y,
                            .width = texture.width * scale,
                            .height = current_height * scale};
   DrawTexturePro(texture, source, destination, Vector2{.x = 0.0, .y = 0.0}, 0.0,

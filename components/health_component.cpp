@@ -8,7 +8,7 @@
 HealthComponent::HealthComponent(float current_health, float max_health)
     : current_health(current_health), max_health(max_health) {}
 
-// TODO: Find a better way to position health bar
+// TODO: Find a better way to give user control over where to render
 void HealthComponent::draw() const {
   auto transform = owner->getComponent<TransformComponent>();
   assert(transform != nullptr);
