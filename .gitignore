@@ -1,6 +1,7 @@
 # Build output
 build/
 brotato-clone
+brotato-bench
 
 # Generated documentation
 docs/
