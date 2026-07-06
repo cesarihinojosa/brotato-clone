@@ -5,17 +5,13 @@
 #include <algorithm>
 #include <cassert>
 
-AnimationSpriteComponent::AnimationSpriteComponent(const char *filename,
+AnimationSpriteComponent::AnimationSpriteComponent(const Texture2D texture,
                                                    float scale, float max_bob,
                                                    float speed)
-    : texture(LoadTexture(filename)), scale(std::clamp(scale, 0.02f, 100.0f)),
+    : texture(texture), scale(std::clamp(scale, 0.02f, 100.0f)),
       max_bob(std::clamp(max_bob, 0.0f, 1.0f)),
       speed(std::clamp(speed, 0.0f, 100.0f)),
       current_bob(std::clamp(max_bob, 0.0f, 1.0f)), up(true) {}
-
-AnimationSpriteComponent::~AnimationSpriteComponent() {
-  UnloadTexture(texture);
-}
 
 // TODO: Find a better way to give user control over where to render
 void AnimationSpriteComponent::draw() const {

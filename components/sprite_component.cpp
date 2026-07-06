@@ -4,8 +4,8 @@
 #include "transform_component.hpp"
 #include <cassert>
 
-SpriteComponent::SpriteComponent(const char *filename, float scale)
-    : texture(LoadTexture(filename)), scale(std::clamp(scale, 0.02f, 100.0f)) {}
+SpriteComponent::SpriteComponent(const Texture2D texture, float scale)
+    : texture(texture), scale(std::clamp(scale, 0.02f, 100.0f)) {}
 
 SpriteComponent::~SpriteComponent() { UnloadTexture(texture); }
 

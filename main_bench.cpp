@@ -4,6 +4,7 @@
 #include "health_component.hpp"
 #include "raylib.h"
 #include "scene.hpp"
+#include "texture_cache.hpp"
 #include "transform_component.hpp"
 
 #include <algorithm>
@@ -86,11 +87,12 @@ int main(int argc, char **argv) {
   long rss_before = peak_rss_bytes();
 
   Scene scene;
+  TextureCache textureCache;
   for (int i = 0; i < N; ++i) {
     GameObject &e = scene.spawn();
     e.addComponent<TransformComponent>(std::rand() % 800, std::rand() % 450);
-    e.addComponent<AnimationSpriteComponent>("assets/enemies/baby_alien.png",
-                                             0.07f, 0.9f, 7);
+    e.addComponent<AnimationSpriteComponent>(
+        textureCache.get("assets/enemies/baby_alien.png"), 0.07f, 0.9f, 7);
     e.addComponent<HealthComponent>(2, 20);
   }
   long rss_after = peak_rss_bytes();
@@ -104,8 +106,7 @@ int main(int argc, char **argv) {
 
   int total = warmup + frames;
   for (int f = 0; f < total && !WindowShouldClose(); ++f) {
-    std::size_t allocs_start =
-        g_alloc_count.load(std::memory_order_relaxed);
+    std::size_t allocs_start = g_alloc_count.load(std::memory_order_relaxed);
 
     auto t_frame = clk::now();
     float dt = GetFrameTime();
@@ -152,8 +153,8 @@ int main(int argc, char **argv) {
       << frames << "," << mean(frame_ms) << "," << percentile(frame_ms, 50)
       << "," << percentile(frame_ms, 99) << "," << mean(update_ms) << ","
       << percentile(update_ms, 99) << "," << mean(draw_ms) << ","
-      << percentile(draw_ms, 99) << "," << (rss_peak / (1024.0 * 1024.0))
-      << "," << bytes_per_entity << "," << mean(allocs) << ","
+      << percentile(draw_ms, 99) << "," << (rss_peak / (1024.0 * 1024.0)) << ","
+      << bytes_per_entity << "," << mean(allocs) << ","
       << percentile(allocs, 99) << "," << notes << "\n";
 
   std::printf("Wrote 1 row to %s\n", path);

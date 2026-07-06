@@ -7,6 +7,7 @@
 #include "rectangle_component.hpp"
 #include "scene.hpp"
 #include "sprite_component.hpp"
+#include "texture_cache.hpp"
 #include "transform_component.hpp"
 #include "velocity_component.hpp"
 
@@ -19,21 +20,22 @@ int main(void) {
   SetTargetFPS(60); // Set our game to run at 60 frames-per-second
 
   Scene scene;
+  TextureCache textureCache;
 
   GameObject &player = scene.spawn();
   player.addComponent<TransformComponent>(screenWidth / 2, screenHeight / 2);
   player.addComponent<VelocityComponent>(5);
   player.addComponent<PlayerInputComponent>();
-  player.addComponent<AnimationSpriteComponent>("assets/characters/bull.png",
-                                                0.15, 0.9, 8);
+  player.addComponent<AnimationSpriteComponent>(
+      textureCache.get("assets/characters/bull.png"), 0.15, 0.9, 8);
   player.addComponent<HealthComponent>(8, 10);
   player.addComponent<HitboxComponent>(25.0);
   player.getComponent<HitboxComponent>()->debug = true;
 
   GameObject &enemy = scene.spawn();
   enemy.addComponent<TransformComponent>(screenWidth / 4, screenHeight / 4);
-  enemy.addComponent<AnimationSpriteComponent>("assets/enemies/baby_alien.png",
-                                               0.07, 0.9, 7);
+  enemy.addComponent<AnimationSpriteComponent>(
+      textureCache.get("assets/enemies/baby_alien.png"), 0.07, 0.9, 7);
   enemy.addComponent<HealthComponent>(2, 20);
 
   // Main game loop
@@ -52,6 +54,7 @@ int main(void) {
   }
 
   // De-Initialization
+  textureCache.unloadAll();
   CloseWindow(); // Close window and OpenGL context
 
   return 0;
