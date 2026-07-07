@@ -27,8 +27,8 @@ public:
       if ((std::get<Ts *>(ptrs) && ...)) {
         result.emplace_back(*o, *std::get<Ts *>(ptrs)...);
       }
-      return result;
     }
+    return result;
   }
 
 private:
