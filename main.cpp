@@ -1,15 +1,6 @@
-#include "animation_sprite_component.hpp"
-#include "game_object.hpp"
-#include "health_component.hpp"
-#include "hitbox_component.hpp"
-#include "player_input_component.hpp"
+#include "components.hpp"
+#include "core.hpp"
 #include "raylib.h"
-#include "rectangle_component.hpp"
-#include "scene.hpp"
-#include "sprite_component.hpp"
-#include "texture_cache.hpp"
-#include "transform_component.hpp"
-#include "velocity_component.hpp"
 
 int main(void) {
 

@@ -1,11 +1,7 @@
 #include "alloc_counter.hpp"
-#include "animation_sprite_component.hpp"
-#include "game_object.hpp"
-#include "health_component.hpp"
+#include "components.hpp"
+#include "core.hpp"
 #include "raylib.h"
-#include "scene.hpp"
-#include "texture_cache.hpp"
-#include "transform_component.hpp"
 
 #include <algorithm>
 #include <chrono>
