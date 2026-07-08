@@ -1,6 +1,6 @@
 #include "component.hpp"
 
-class DamageComponent : Component {
+class DamageComponent : public Component {
 public:
   DamageComponent(
       int damage,

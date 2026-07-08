@@ -9,7 +9,8 @@ public:
   /// @param radius  Hitbox radius
   HitboxComponent(float radius);
   void draw() const override;
+  int getRadius();
 
 private:
-  const float radius;
+  const float radius_;
 };

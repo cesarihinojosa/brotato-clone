@@ -1,5 +1,6 @@
 #pragma once
 #include "animation_sprite_component.hpp"
+#include "damage_component.hpp"
 #include "health_component.hpp"
 #include "hitbox_component.hpp"
 #include "player_input_component.hpp"
