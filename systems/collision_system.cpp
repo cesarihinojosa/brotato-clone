@@ -4,7 +4,9 @@
 
 void CollisionSystem::update(Scene &scene, float dt) {
   auto objects = scene.view<HitboxComponent, TransformComponent>();
-  for (size_t i = 0; i < objects.size(); i++) {
+  for (size_t i = 0; i < objects.size();
+       i++) { // TODO: O(n^2) I think it has to be, but maybe it cna be slightly
+              // optimized
     auto &[object_a, hitbox_a, position_a] = objects[i];
     for (size_t j = 0; j < objects.size(); j++) {
       auto &[object_b, hitbox_b, position_b] = objects[j];
