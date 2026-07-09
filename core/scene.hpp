@@ -13,16 +13,20 @@ public:
   /// reference. The reference remains valid for the lifetime of the Scene.
   GameObject &spawn();
 
-  /// Calls update(dt) on all living GameObjects.
+  /// Updates all components, then runs all systems in registration order.
   void update(float dt);
 
   /// Calls draw() on all living GameObjects.
   void draw() const;
 
+  /// Creates a system of type T and adds it to the scene.
+  /// Systems run in the order they are added, after component updates.
   template <typename T, typename... Args> void addSystem(Args &&...args) {
     systems.push_back(std::make_unique<T>(std::forward<Args>(args)...));
   }
 
+  /// Returns all living GameObjects that have every component in Ts,
+  /// along with references to those components.
   template <typename... Ts>
   std::vector<std::tuple<GameObject &, Ts &...>> view() {
     std::vector<std::tuple<GameObject &, Ts &...>> result;

@@ -1,3 +1,4 @@
+#pragma once
 #include "component.hpp"
 
 /// Stores the world-space position of a GameObject.

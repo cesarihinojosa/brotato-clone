@@ -1,11 +1,16 @@
+#pragma once
 #include "component.hpp"
 
+/// Stores how much damage this entity deals on contact.
 class DamageComponent : public Component {
 public:
-  DamageComponent(
-      int damage,
-      int max_damage); // TODO: damage in constructor bypasses setDamage()
+  // TODO: damage in constructor bypasses setDamage()
+  DamageComponent(int damage, int max_damage);
+
+  /// Sets damage, clamped to [0, max_damage].
   void setDamage(int damage);
+
+  /// Returns the current damage value.
   int getDamage();
 
 private:

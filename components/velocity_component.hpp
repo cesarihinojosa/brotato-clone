@@ -1,3 +1,4 @@
+#pragma once
 #include "component.hpp"
 
 /// Stores a scalar movement speed for use by input or AI components.
