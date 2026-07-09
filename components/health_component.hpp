@@ -1,8 +1,8 @@
+#pragma once
 #include "component.hpp"
 #include "raylib.h"
 
-/// Adds a health component and renders a health bar at TransformComponet->x and
-/// TransformComponent->y.
+/// Tracks current/max health and renders a color-coded health bar.
 ///
 /// Requires: TransformComponent on owner.
 class HealthComponent : public Component {
