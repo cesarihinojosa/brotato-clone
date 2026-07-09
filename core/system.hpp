@@ -1,4 +1,6 @@
-#include "scene.hpp"
+#pragma once
+
+class Scene;
 
 class System {
 public:

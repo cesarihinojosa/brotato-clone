@@ -1,5 +1,6 @@
 #include "scene.hpp"
 #include "game_object.hpp"
+#include "system.hpp"
 #include <memory>
 
 GameObject &Scene::spawn() {
@@ -10,6 +11,8 @@ GameObject &Scene::spawn() {
 void Scene::update(float dt) {
   for (auto &o : objects)
     o->update(dt);
+  for (auto &s : systems)
+    s->update(*this, dt);
 }
 
 void Scene::draw() const {

@@ -1,7 +1,9 @@
 #pragma once
 #include "game_object.hpp"
+#include "system.hpp"
 #include <memory>
 #include <tuple>
+#include <utility>
 #include <vector>
 
 /// Manages all GameObjects and drives the main update/draw loop.
@@ -16,6 +18,10 @@ public:
 
   /// Calls draw() on all living GameObjects.
   void draw() const;
+
+  template <typename T, typename... Args> void addSystem(Args &&...args) {
+    systems.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+  }
 
   template <typename... Ts>
   std::vector<std::tuple<GameObject &, Ts &...>> view() {
@@ -33,4 +39,5 @@ public:
 
 private:
   std::vector<std::unique_ptr<GameObject>> objects;
+  std::vector<std::unique_ptr<System>> systems;
 };

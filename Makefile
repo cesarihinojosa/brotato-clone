@@ -2,7 +2,7 @@ CXX      := clang++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2
 LDFLAGS  := $(shell pkg-config --libs raylib)
 
-SRCDIRS  := core components entities
+SRCDIRS  := core components entities systems
 CPPFLAGS := $(shell pkg-config --cflags raylib) $(addprefix -I,$(SRCDIRS))
 
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)
